@@ -1,0 +1,124 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Flutter Posts API",
+        "description": "API to fetch seeded posts with title, description and image",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost"
+        }
+    ],
+    "paths": {
+        "/api/posts": {
+            "get": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Get list of posts",
+                "operationId": "3fda362e2e082b5357ac416e7767e435",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number (for pagination)",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Items per page",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 10
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Search term for filtering by title or description",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "sample"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Sample Post Title"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "This is a sample post description."
+                                                    },
+                                                    "image": {
+                                                        "type": "string",
+                                                        "example": "https://example.com/image.jpg"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "current_page": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "last_page": {
+                                            "type": "integer",
+                                            "example": 5
+                                        },
+                                        "per_page": {
+                                            "type": "integer",
+                                            "example": 10
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "example": 42
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Posts",
+            "description": "Posts"
+        }
+    ]
+}
