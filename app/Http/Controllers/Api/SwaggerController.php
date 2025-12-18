@@ -10,6 +10,14 @@ use App\Http\Controllers\Controller;
  *     title="Flutter Posts API",
  *     description="API to fetch seeded posts with title, description and image",
  * )
+ *
+ * @OA\SecurityScheme(
+ *     securityScheme="bearerAuth",
+ *     type="http",
+ *     scheme="bearer",
+ *     bearerFormat="JWT",
+ *     description="Use the token from the login / register response as: Bearer {token}"
+ * )
  */
 class SwaggerController extends Controller
 {
