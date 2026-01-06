@@ -16,10 +16,13 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
+        $seed = $this->faker->unique()->numberBetween(1, 1000);
+    
         return [
             'title' => $this->faker->sentence(6),
             'description' => $this->faker->paragraph(3),
-            'image' => $this->faker->imageUrl(640, 480, 'posts', true, 'Post'),
+            'image' => "https://picsum.photos/seed/{$seed}/640/480",
         ];
     }
+
 }
